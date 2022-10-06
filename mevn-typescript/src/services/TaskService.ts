@@ -1,13 +1,21 @@
-//permite la comunicación con el backend
-import axios from './axios'
-import {AxiosResponse} from 'axios'
-import { Task } from '@/interfaces/Task'
 
-//funcion para obetener las tareas 
-export const getTasks = async (): Promise<AxiosResponse<Task[]>> => 
-    await axios.get("/tasks");
+import { Task } from "@/interfaces/Task";
+import { AxiosResponse } from "axios";
+import axios from "./axios";
 
+export const getTasks = async (): Promise<AxiosResponse<Task[]>> =>
+  await axios.get("/tasks");
 
-//funcion para crear una tarea dentro del backend
-export const createTask = async (task: Task) => 
-    await axios.post("/tasksPost", task)
+export const getTask = async (id: string): Promise<AxiosResponse<Task>> =>
+  await axios.get('/task/${id}');
+
+export const createTask = async (task: Task): Promise<AxiosResponse> =>
+  await axios.post("/tasksPost", task);
+
+export const updateTask = async (
+  id: string,
+  newTask: Task
+): Promise<AxiosResponse<Task>> => await axios.put('/tasks/${id}', newTask);
+
+export const deleteTask = async (id: string): Promise<AxiosResponse> =>
+  await axios.delete('/tasks/${id}');
