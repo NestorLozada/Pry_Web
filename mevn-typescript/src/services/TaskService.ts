@@ -9,7 +9,7 @@ export const getTask = async (id: string): Promise<AxiosResponse<Task>> =>
   await axios.get(`/tasks/${id}`);
 
 export const createTask = async (task: Task): Promise<AxiosResponse> =>
-  await axios.post("/tasks", task);
+  await axios.post("/tasksPost", task);
 
 export const updateTask = async (
   id: string,

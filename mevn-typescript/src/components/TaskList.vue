@@ -5,7 +5,7 @@
         style="cursor: pointer"
         v-for="(task, index) in tasks"
         :key="index"
-        @click="this.$router.push(`/tasks/${task._id}`)"
+        @click="this.$router.push(`/task/${task._id}`)"
       >
         {{ task.title }}
       </li>
