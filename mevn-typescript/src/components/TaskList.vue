@@ -1,39 +1,40 @@
 <template>
-    <ul>
-        <li v-for="(task, index) in tasks"
-      :key="index"
-      @click="this.$router.push(`/tasks/${task._id}`)">
-            {{task.title}}
-        </li>
-        
+    <ul class="list-group">
+      <li
+        class="list-group-item list-group-item-action p-4"
+        style="cursor: pointer"
+        v-for="(task, index) in tasks"
+        :key="index"
+        @click="this.$router.push(`/tasks/${task._id}`)"
+      >
+        {{ task.title }}
+      </li>
     </ul>
-
-</template>
+  </template>
 
 <script lang="ts">
-    import { defineComponent } from 'vue';
-    import {getTasks} from "@/services/TaskService"
-    import { Task } from '@/interfaces/Task';
-
-    export default defineComponent ({
-        data() {
-            return{
-                tasks: [] as Task[],
-
-            };
+    import { Task } from "@/interfaces/Task";
+    import { getTasks } from "@/services/TaskService";
+    import { defineComponent } from "vue";
+    export default defineComponent({
+      name: "tasks-list",
+      data() {
+        return {
+          tasks: [] as Task[],
+        };
+      },
+      methods: {
+        async loadTasks() {
+          try {
+            const res = await getTasks();
+            this.tasks = res.data;
+          } catch (error) {
+            console.error(error);
+          }
         },
-        methods: {
-            async  loadTask(){
-               const res = await getTasks(); 
-               console.log(res)
-               this.tasks = res.data
-            }
-
-        },
-        mounted(){
-            this.loadTask()
-
-        }
-
-    })
+      },
+      mounted() {
+        this.loadTasks();
+      },
+    });
 </script>

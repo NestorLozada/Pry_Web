@@ -1,20 +1,32 @@
 <template>
-    <div class="col-md-4 offset-md-4">
-      <form @submit.prevent="handleUpdate()">
-        <input type="text" v-model = "currentTask.title"/>
-        <textarea rows = "3" v-model="currentTask.description"></textarea>
-        <button>Update</button>
-      </form>
-  
-      <button @click="handleDelete()" class="btn btn-danger my-4">delete</button>
-    </div>
-  </template>
-  
-  <script lang="ts">
+  <div class="col-md-4 offset-md-4">
+    <form @submit.prevent="handleUpdate()" class="card card-body">
+      <h1 class="card-title my-3 text-center">Update a Task</h1>
+
+      <input
+        type="text"
+        v-model="currentTask.title"
+        class="form-control mb-3"
+      />
+
+      <textarea
+        v-model="currentTask.description"
+        class="form-control mb-3"
+      ></textarea>
+
+      <button class="btn btn-primary">Update</button>
+    </form>
+
+    <button @click="handleDelete()" class="btn btn-danger my-4">delete</button>
+  </div>
+</template>
+
+<script lang="ts">
   import { defineComponent } from "vue";
   import { Task } from "@/interfaces/Task";
   import { deleteTask, getTask, updateTask } from "@/services/TaskService";
   export default defineComponent({
+    name: "task-list",
     data() {
       return {
         currentTask: {} as Task,
@@ -57,4 +69,3 @@
     },
   });
   </script>
-  
