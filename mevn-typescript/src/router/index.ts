@@ -15,7 +15,6 @@ const routes: RouteRecordRaw []= [
     },
     {
         path : '/task/:id',
-        alias: '/tasks/:id',
         name: 'task-detail',
         component: () => import('@/components/TaskDetail.vue'),
 
