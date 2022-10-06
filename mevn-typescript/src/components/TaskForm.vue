@@ -1,24 +1,31 @@
 <template>
-    <for>
+    <form @submit.prevent="saveTask()">
         <input type="text" placeholder="Incerte texto" v-model="task.title">
-        <textarea  rows="3" placeholder="Incerte texto" v-model="task.description"></textarea>
+        <textarea  
+            rows="3" 
+            placeholder="Incerte texto" v-model="task.description">
+        </textarea>
         <button> Guardar </button>
-    </for>
+    </form>
 </template>
-
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import {Task} from '../interfaces/Task';
+import { Task } from '@/interfaces/Task';
+import {createTask} from '@/services/TaskService'
 
-export default defineComponent({
+export default  defineComponent({
     data(){
         return{
-            task: {  
-
-            } as Task
+            task: {} as Task
         };
     },
+    methods :{
+        async saveTask(){
+           const res = await createTask(this.task); 
+           console.log(res);
+        }
+    }
 });
 
 </script>
