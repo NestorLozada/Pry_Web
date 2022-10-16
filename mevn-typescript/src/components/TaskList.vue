@@ -34,7 +34,12 @@
         },
       },
       mounted() {
-        this.loadTasks();
+            const isAut = sessionStorage.getItem("isAut") || "";
+            if (isAut !== "true")
+              this.$router.push({ name: "login" });
+            else
+          this.loadTasks();
+
       },
     });
 </script>

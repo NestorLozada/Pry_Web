@@ -49,17 +49,28 @@ router.put('/tasks/:id', async (req, res) =>{
     res.json(updatedTask);
 });
 
-router.get('/users', async (req, res) =>{
-    const tasks = await User.find()
-    res.send(tasks);
-});
+router.post('/login', async (req, res) =>{
+    const{ email, passWord} = req.body
 
-router.post('/registerUser', async (req, res) =>{
-    const{firstName, lastName, email, passWord } = req.body
-
-    const user = new User({firstName, lastName, email, passWord })
-    await user.save();
-    res.json(user);
+    const user = await User.findOne({email})
+        if (user === null){
+            res.status(401).send({
+                message: "No se encontró el usuario!",
+                flag: false,
+            })
+        }
+        if (user?.passWord === passWord) {
+            res.status(200).send( {
+                message: "Ingreso!",
+                flag: true,
+            })
+        }
+        else{ 
+            res.status(401).send({
+                message: "Credenciales erroneas!",
+                flag: false,
+            })
+        }
     
 });
 
