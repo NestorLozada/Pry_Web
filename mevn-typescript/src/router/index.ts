@@ -14,10 +14,20 @@ const routes: RouteRecordRaw []= [
 
     },
     {
-        path : '/task/:id',
+        path : '/task/:id'  ,
         name: 'task-detail',
         component: () => import('@/components/TaskDetail.vue'),
 
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/components/Login.vue'),
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: () => import('@/components/Reegister.vue'),
     },
 ];
 const router = createRouter({

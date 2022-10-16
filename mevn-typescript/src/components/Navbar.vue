@@ -21,6 +21,9 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/task/new">Nueva tarea</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">Log Out</router-link>
+            </li>
           </ul>
         </div>
       </div>

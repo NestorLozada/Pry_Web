@@ -41,7 +41,6 @@
         async saveTask() {
           try {
             const res = await createTask(this.task);
-            console.log(res);
             this.$router.push({ name: "task" });
           } catch (error) {
             console.error(error);
