@@ -39,7 +39,6 @@
               this.$router.push({ name: "login" });
             else
           this.loadTasks();
-
       },
     });
 </script>

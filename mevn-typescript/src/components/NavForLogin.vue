@@ -8,7 +8,7 @@
                 <router-link class="nav-link" to="/login">Log in</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/task/new">Log out</router-link>
+                <button @click="logout()"  class="btn btn-primary btn-block" >Log out </button>
               </li>
             </ul>
         </div>
@@ -21,5 +21,11 @@
     
         export default defineComponent({
             name: "NavForLogin",
+            methods:{
+                logout(){
+                  sessionStorage.removeItem("isAut");
+                  this.$router.push({ name: "login" });
+                }
+            }
         })
 </script> 
