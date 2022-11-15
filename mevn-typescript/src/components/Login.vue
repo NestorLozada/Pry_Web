@@ -28,7 +28,7 @@ import { login } from '@/services/UserService';
         },
 
         methods:{
-            async handleSubmit(e){            
+            async handleSubmit(){            
             try {
                 
                 const res = await login(this.login);

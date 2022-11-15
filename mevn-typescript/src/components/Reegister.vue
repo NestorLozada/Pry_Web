@@ -40,7 +40,7 @@
             }
         },
         methods:{
-            async handleSubmit(e){
+            async handleSubmit(){
                 
             try {
                 const res = await createUser(this.registre);
