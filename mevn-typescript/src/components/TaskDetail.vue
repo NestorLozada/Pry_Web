@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4 offset-md-4">
+  <div>
     <form @submit.prevent="handleUpdate()" class="card card-body">
       <h1 class="card-title my-3 text-center">Update a Task</h1>
 

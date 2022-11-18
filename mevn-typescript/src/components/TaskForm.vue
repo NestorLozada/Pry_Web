@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4 offset-4">
+    <div>
       <div class="card card-body">
         <h1 class="card-title my-3 text-center">Create a Task</h1>
         <form @submit.prevent="saveTask()">

@@ -10,4 +10,4 @@ Ingresar a la carpeta de la siguiente manera
 ## Iniciar el proyecto (front end)
 Ingresar a la carpeta de la siguiente manera
 * `cd mevn-typescript` para acceder a la carpeta de poryecto 
-* `cd src` para acceder a la carpeta del front end
+* `npm run serve` para poder correr el proyecto 
