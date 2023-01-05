@@ -9,9 +9,9 @@ router.get('/tasks', async (req, res) =>{
     res.send(tasks);
 });
 router.post('/tasksPost', async (req, res) =>{
-    const{title, description} = req.body
+    const{title, description,esfuerzo, fecha_creacion, category} = req.body
 
-    const task = new Task({title, description})
+    const task = new Task({title, description,esfuerzo, fecha_creacion, category})
     await task.save();
     res.json(task);
 });

@@ -1,6 +1,5 @@
 export interface DataInfo{
-    esfuerzo: number;
+    titulo: number;
     descripcion: string ;
-    done: boolean;
-    fecha_real: Date;
+    
 }

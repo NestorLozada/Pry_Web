@@ -14,7 +14,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import { DataInfo } from "@/interfaces/Data";
-import {getData, updateData} from "@/services/TaskService";
+import {getData, getTask, updateData} from "@/services/TaskService";
 import { loadRouteLocation } from "vue-router";
 export default defineComponent({
     name: "data-list",
@@ -26,7 +26,7 @@ export default defineComponent({
     methods: {
         async loadData(id: string){
             try {
-                const {data} = await getData(id);
+                const {data} = await getTask(id);
                 this.currentData = data;
             } catch (error) {
                 console.error(error);

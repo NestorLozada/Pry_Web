@@ -3,4 +3,6 @@ export interface Task{
     description: string;
     done: boolean;
     _id: string;
+    esfuerzo: number;
+    fecha_creacion: Date;
 }

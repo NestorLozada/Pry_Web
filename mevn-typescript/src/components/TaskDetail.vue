@@ -8,7 +8,16 @@
         v-model="currentTask.title"
         class="form-control mb-3"
       />
-
+      <input 
+        type="number"
+        v-model="currentTask.esfuerzo"  
+        class="form-control mb-3"
+      />
+      <input 
+        type="date"
+        v-model="currentTask.fecha_creacion"  
+        class="form-control mb-3"
+      />
       <textarea
         v-model="currentTask.description"
         class="form-control mb-3"

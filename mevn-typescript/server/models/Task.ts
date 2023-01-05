@@ -1,7 +1,7 @@
 import { def } from "@vue/shared";
-import { Schema, model } from "mongoose";
+import { Schema, model, InferSchemaType, ObjectId, Types, Model } from "mongoose";
+import mongoose from 'mongoose';
 import { setBlockTracking } from "vue";
-
 const taskSchema = new Schema({
     title: {
         type: String,
@@ -18,6 +18,17 @@ const taskSchema = new Schema({
         type: Boolean,
         default: false
     },
+    esfuerzo:{
+        type: Number,
+        default: 0
+    },
+    fecha_creacion:{
+        type: Date
+    },
+    category: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'Categorias' 
+    }
 },
 {
     versionKey: false
