@@ -10,3 +10,6 @@ export const createUser = async (registerIN: RegisterIN): Promise<AxiosResponse>
     const resp = await axios.post<LogRes>("/login", Login);
     return resp.data
   }
+
+  export const deleteUser = async (id: string): Promise<AxiosResponse> =>
+    await axios.delete(`/login/${id}`);

@@ -48,7 +48,30 @@ router.put('/tasks/:id', async (req, res) =>{
     });
     res.json(updatedTask);
 });
+router.delete ('/login/:id', async(req, res)=> {
+    const deleteUser = await User.findByIdAndDelete(req.params.id);
+    try{
+        if (!deleteUser) return res.status(404).json({message: "Usuario no encontrado"});
 
+        return res.json(deleteUser);
+    }catch(error) {
+        return res.status(500).send(error);
+        
+    }
+
+});
+router.get('/login/:id', async (req, res) =>{
+    try {
+        const user = await Task.findById(req.params.id);
+    
+        if(!user) return res.status(404).json({message: "Usuario no encontrada"});
+        res.send(user);
+
+    } catch (error) {
+        return res.status(500).send(error);
+    }
+
+});
 router.post('/login', async (req, res) =>{
     const{ email, passWord} = req.body
 

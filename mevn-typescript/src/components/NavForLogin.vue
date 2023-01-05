@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand navbar-light fixed-top">
       <div class="container">
-        <a href="/task" class="navbar-brand">home</a>
+        <a href="/task" class="navbar-brand">HOME</a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
               <li class="nav-item">

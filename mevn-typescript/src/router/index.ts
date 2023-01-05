@@ -29,6 +29,11 @@ const routes: RouteRecordRaw []= [
         name: 'register',
         component: () => import('@/components/Reegister.vue'),
     },
+    {
+        path: '/data',
+        name:'data-detail',
+        component: () => import ('@/components/Data.vue'),
+    }
 ];
 const router = createRouter({
         history: createWebHistory(),
