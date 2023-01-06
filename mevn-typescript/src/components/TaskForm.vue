@@ -16,9 +16,26 @@
             rows="3"
             v-model="task.description"
           ></textarea>
+          <input 
+          type="number"
+          v-model="task.esfuerzo"  
+          class="form-control mb-3"
+          />
+          <input 
+          type="date"
+          v-model="task.fecha_creacion"  
+          class="form-control mb-3"
+          />
+          <textarea
+            class="form-control mb-3"
+            placeholder="Set a date"
+            type="title"
+            v-model = "task.category"
+            autofocus
+          ></textarea>
           <button
-            class="btn btn-primary w-100"
-            :disabled="!task.title || !task.description"
+          class="btn btn-primary w-100"
+          :disabled="!task.title || !task.description"
           >
             save
           </button>

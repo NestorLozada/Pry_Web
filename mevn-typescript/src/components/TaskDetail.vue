@@ -22,6 +22,10 @@
         v-model="currentTask.description"
         class="form-control mb-3"
       ></textarea>
+      <input
+        type="text"
+        v-model="currentTask.category"
+      />
 
       <button class="btn btn-primary">Update</button>
     </form>
