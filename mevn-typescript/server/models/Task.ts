@@ -27,7 +27,7 @@ const taskSchema = new Schema({
     },
     category: { 
         type: Schema.Types.ObjectId, 
-        ref: 'Categorias' 
+        ref: 'categorias' 
     }
 },
 {

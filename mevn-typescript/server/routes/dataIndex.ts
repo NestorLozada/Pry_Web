@@ -1,4 +1,5 @@
 import { json, Router } from "express";
+import Categorias from "../models/Categorias";
 import Data from '../models/Categorias'
 import Task from "../models/Task";
 const router = Router()
@@ -67,9 +68,8 @@ router.get('/info', async (req, res) => {
       if (year_int < 1000 || year_int > 9999) {
         return res.status(400).send({ message: 'Invalid year' });
       }
-      // filter the tasks collection by month and year and group by category_code
-      const tasksByCategory = await Task.aggregate([
-        {
+      const tasksByCategory = await Categorias.aggregate([
+        /*{
           $match: {
             fecha_creacion: {
               $gte: new Date(`${year_int}-${month_int}-01`),
@@ -77,26 +77,34 @@ router.get('/info', async (req, res) => {
               
             }
           }
-        },
+        },*/
         {
             $lookup: {
-              from: 'Categorias',
-              localField: 'category',   
-              foreignField: '_id',
-              as: 'category'
-            }
-          },
-          {
-            $unwind: '$category'
-          },
-          {
-            $group: {
-              _id: '$category._id',
-              name: { $first: '$category.titulo' },
-              avgEffort: { $avg: '$esfuerzo' }
+              from: 'tasks',
+              localField: '_id',   
+              foreignField: 'category',
+              as: 'tasks'
             }
           }
         ]);
+        const results = [] 
+        const fecha_min = new Date(`${year_int}-${month_int}-01`)
+        const fecha_max = new Date(`${year_int}-${month_int + 1}-01`)
+        tasksByCategory.forEach(category => {
+          const tasks = category.tasks.filter((taske:any) => {
+            
+            const fecha = taske.fecha_creacion
+            return fecha.getTime() >= fecha_min.getTime() && fecha.getTime() <= fecha_max
+
+          })
+          const totalEsfuerzo = tasks.reduce((task:any) => task.esfuerzo, 0)
+            const totalTasks = tasks.length()
+
+            results.push({
+            category: category.name,
+            avgEsfuerzo:  totalTasks == 0 ? 0 : totalEsfuerzo / totalTasks
+            })
+        })
         console.log(tasksByCategory.length);
         // build the response array
         const response = tasksByCategory.map(task => {
