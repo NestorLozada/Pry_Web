@@ -5,27 +5,35 @@
     <input
         class="form-control mb-3"
         placeholder="Fecha inicial"
-        type="month"
-        v-model="month_year"
+        type="date"
+        v-model="fechaInicio"
+        autofocus
+    />
+    <input
+        class="form-control mb-3"
+        placeholder="Fecha final"
+        type="date"
+        v-model="fechaFin"
         autofocus
     />
     <input 
           type="number"
-          v-model="esCompare"  
+          v-model="minEsfuerzo"  
           class="form-control mb-3"
     />
 
-    <button @click="getCategories()">Get Categories</button>
+    <button @click="getCategories()">Get Filter Data</button>
 </div>
 <div>
     <ul class="list-group">
-        <h1> Lista {{ currentDatas.length }}</h1>    
+        <h1> Lista </h1>    
         <li
             class="list-group-item list-group-item-action p-4"
-            v-for="(currentData, index) in currentDatas"
+            v-for="(taskss, index) in tasks"
             v-bind:key="index"
-        >
-        {{  currentData.avgEsfuerzo }}
+        > {{ taskss.title }}
+        {{ taskss.esfuerzo }}
+        {{ taskss.done }}
     </li>
     </ul>
 </div>
@@ -33,27 +41,31 @@
 
 <script lang="ts">
 import { DataInfo } from "@/interfaces/Data";
-import {getInfo} from "@/services/TaskService";
+import {Task} from "@/interfaces/Task";
+import {getInfo,getTareasPen} from "@/services/TaskService";
 import {defineComponent} from "vue";
 export default defineComponent({
-    name: "data-list",
+    name: "data-filter",
     data() {
         return{
-            currentDatas: [] as DataInfo[],
-            month_year: '',
-            esCompare: '',
+            tasks: [] as Task[],
+            fechaInicio: '',
+            fechaFin: '',
+            minEsfuerzo: '',
         };
     },
     methods: {
 
         async getCategories(){
             try {
-                const dateParts = this.month_year.split('-') // YYYY-mm
-                const esfuerzoCompare = this.esCompare
-                const res = await getInfo(Number (dateParts[1]),
-                                                 Number (dateParts[0]),
+                const dateInicio = this.fechaInicio
+                const datesFin = this.fechaFin
+                const esfuerzoCompare = this.minEsfuerzo
+
+                const res = await getTareasPen(dateInicio, datesFin,
                                                 esfuerzoCompare)
                 this.currentData = res.data
+                console.log(esfuerzoCompare)
                 console.log (res.data)
                         
             } catch (error) {

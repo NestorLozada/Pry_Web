@@ -28,7 +28,7 @@
           />
           <textarea
             class="form-control mb-3"
-            placeholder="Set a date"
+            placeholder="Set a category id"
             type="title"
             v-model = "task.category"
             autofocus

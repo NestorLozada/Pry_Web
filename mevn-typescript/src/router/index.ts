@@ -30,9 +30,14 @@ const routes: RouteRecordRaw []= [
         component: () => import('@/components/Reegister.vue'),
     },
     {
-        path: '/data',
-        name:'data-detail',
+        path: '/info',
+        name:'data-list',
         component: () => import ('@/components/Data.vue'),
+    },
+    {
+        path: '/filteredTasks',
+        name: 'data-filter',
+        component:() => import('@/components/FilteredTasks.vue')
     }
 ];
 const router = createRouter({

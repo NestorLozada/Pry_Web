@@ -15,7 +15,12 @@
       />
       <input 
         type="date"
-        v-model="currentTask.fecha_creacion"  
+        v-model="currentTask.done"  
+        class="form-control mb-3"
+      />
+      <input 
+        type="checkbox"
+        v-model="currentTask.done"  
         class="form-control mb-3"
       />
       <textarea

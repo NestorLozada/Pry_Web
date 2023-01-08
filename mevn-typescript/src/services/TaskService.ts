@@ -20,16 +20,13 @@ export const updateTask = async (
 export const deleteTask = async (id: string): Promise<AxiosResponse> =>
   await axios.delete(`/tasks/${id}`);
 //++++++++++++++++++++++++++INFORMACION+++++++++++++++++++++++++++++++++++++++++
-export const getDatas =async (): Promise<AxiosResponse<DataInfo[]>> => 
-  await axios.get("/datas");
 
-export const getData = async (id: string): Promise<AxiosResponse<Task>> =>
-  await axios.get(`/data/${id}`);
+export const getInfo  = async (month:number, year:number, esCompare:number): Promise<AxiosResponse<DataInfo[]>> =>
+ await axios.post('/info', {
+  month: month, year: year, esCompare: esCompare
+});
 
- export const createData = async (data: DataInfo): Promise<AxiosResponse> =>
-  await axios.post("/dataPost", data);
-
-export const updateData = async (
-  id: string,
-  newData: DataInfo
-): Promise<AxiosResponse<DataInfo>> => await axios.put(`/datas/${id}`, newData);
+export const getTareasPen  = async (fechaInicio:Date, fechaFin:Date, esfuerzo:number): Promise<AxiosResponse<Task[]>> =>
+ await axios.post('/filteredTasks', {
+  fechaInicio: fechaInicio, fechaFin: fechaFin, esfuerzo: esfuerzo
+});

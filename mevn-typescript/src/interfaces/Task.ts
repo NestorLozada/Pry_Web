@@ -5,4 +5,5 @@ export interface Task{
     _id: string;
     esfuerzo: number;
     fecha_creacion: Date;
+    category: string;
 }

@@ -1,5 +1,6 @@
 export interface DataInfo{
-    titulo: number;
-    descripcion: string ;
-    
+
+    category: string;
+    avgEsfuerzo: Number;
+
 }
