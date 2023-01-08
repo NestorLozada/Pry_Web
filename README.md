@@ -11,3 +11,6 @@ Ingresar a la carpeta de la siguiente manera
 Ingresar a la carpeta de la siguiente manera
 * `cd mevn-typescript` para acceder a la carpeta de poryecto 
 * `npm run serve` para poder correr el proyecto 
+## Usuario y contraseña para ingresar 
+*  Correo: martin@gmail.com
+* Contraseña: 123456
