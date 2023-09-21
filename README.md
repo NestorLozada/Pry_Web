@@ -1,4 +1,4 @@
-# Nestor Lozada (core)
+# Nestor Lozada (Organizador de tareas)
 ## Project set up 
 Para poder establecer el entorno de trabajo es necsario ejecutar el siguiente comando en el terminar `npm install`
 ## Iniciar el servidor 
